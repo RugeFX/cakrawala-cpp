@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.embeddedhtml": "html",
-        ".fantomasignore": "ignore",
-        "*.html": "html",
-        "iostream": "cpp",
-        "ostream": "cpp"
-    }
-}
