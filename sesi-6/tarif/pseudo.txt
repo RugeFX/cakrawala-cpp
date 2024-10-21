@@ -1,0 +1,18 @@
+anak = 3500 / 5
+remaja = 4500 / 5
+dewasa = 5500 / 5
+lainnya = 10000
+
+kategori = input("Kategori usia (anak, remaja, dewasa): ")
+jarak_tempuh = (int) input("Kategori jarak tempuh: ")
+
+if kategori == "anak":
+    hasil = anak * jarak_tempuh
+elif kategori == "remaja":
+    hasil = remaja * jarak_tempuh
+elif kategori == "dewasa":
+    hasil = dewasa * jarak_tempuh
+else:
+    hasil = lainnya
+
+print("Hasil perhitungan tarif:", hasil)
