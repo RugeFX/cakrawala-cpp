@@ -1,0 +1,26 @@
+total_transaksi = 5
+total_nominal = 0
+
+for i in range(total_transaksi):
+    nominal = (float) input("Masukkan nominal transaksi belanja ke-{i + 1}: ")
+    total_nominal += nominal
+
+if total_nominal > 1000000:
+    point = total_nominal * 0.1
+elif total_nominal >= 500000 && total_nominal <= 1000000:
+    point = total_nominal * 0.05
+else:
+    point = 0
+
+if point < 25000:
+    level = "Bronze"
+elif point >= 25000 && point < 50000:
+    level = "Silver"
+elif point >= 50000 && point < 300000:
+    level = "Gold"
+else:
+    level = "Platinum"
+
+print("Nominal Belanja:", total_nominal)
+print("Total Point:", point)
+print("Level:", level)

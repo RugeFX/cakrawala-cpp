@@ -1,0 +1,29 @@
+kehadiran = 0.1
+ujian_harian = 0.2
+uts = 0.35
+uas = 0.35
+
+total_kehadiran = (int) input("Masukkan Total Kehadiran: ")
+nilai_ujian_harian = (float) input("Masukkan Nilai Ujian Harian: ")
+nilai_uts = (float) input("Masukkan Nilai UTS: ")
+
+if total_kehadiran >= 13:
+    nilai_uas = (float) input("Masukkan Nilai UAS: ")
+else:
+    nilai_uas = 0
+
+nilai_akhir = ((total_kehadiran / 16) * 100 * kehadiran) + (ujian_harian * nilai_ujian_harian) + (uts * nilai_uts) + (uas * nilai_uas)
+
+if nilai_akhir >= 85:
+    mutu = 'A'
+elif nilai_akhir >= 70 and nilai_akhir < 85:
+    mutu = 'B'
+elif nilai_akhir >= 60 and nilai_akhir < 70:
+    mutu = 'C'
+elif nilai_akhir >= 50 and nilai_akhir < 60:
+    mutu = 'D'
+else:
+    mutu = 'E'
+
+print("Nilai Akhir:", nilai_akhir)
+print("Huruf Mutu:", mutu)
