@@ -18,9 +18,9 @@ namespace go_food
 
     void proses()
     {
-        cout << "==============================================" << endl;
-        cout << "Welcome to GoFood!" << endl;
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
+        cout << "               Welcome to GoFood!              " << endl;
+        cout << "===============================================" << endl;
 
         string kategori;
         while (true)
@@ -44,13 +44,13 @@ namespace go_food
         bayar.second += ONGKIR;
 
         cout << fixed << setprecision(2);
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
         cout << "Kategori makanan: " << kategori << endl;
         cout << "Jumlah pesanan: " << jumlah << endl;
         cout << "Metode pembayaran: " << bayar.first << endl;
         cout << "Nominal pembayaran: Rp." << bayar.second << " (termasuk ongkir sebesar Rp." << ONGKIR << ")" << endl;
         cout << endl
              << "Terimakasih telah menggunakan aplikasi GoFood!" << endl;
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
     }
 }

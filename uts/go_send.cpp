@@ -18,9 +18,9 @@ namespace go_send
 
     void proses()
     {
-        cout << "==============================================" << endl;
-        cout << "Welcome to GoSend!" << endl;
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
+        cout << "               Welcome to GoSend!              " << endl;
+        cout << "===============================================" << endl;
 
         double jarak;
         cout << "Masukkan jarak tempuh: ";
@@ -42,7 +42,7 @@ namespace go_send
             bayar.second += TARIF_TAMBAHAN;
 
         cout << fixed << setprecision(2);
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
         cout << "Jarak tempuh: " << jarak << endl;
         cout << "Berat barang: " << berat << endl;
         cout << "Volume barang: " << volume << endl;
@@ -53,6 +53,6 @@ namespace go_send
         cout << endl;
         cout << endl
              << "Terimakasih telah menggunakan aplikasi GoFood!" << endl;
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
     }
 }

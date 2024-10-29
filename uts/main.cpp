@@ -8,28 +8,41 @@ using namespace std;
 
 int main()
 {
-    string layanan;
+    int layanan;
+
+    cout << "===============================================" << endl;
+    cout << "       Selamat datang di aplikasi GoJek!       " << endl;
+    cout << "===============================================" << endl;
 
     while (true)
     {
-        cout << "Pilih layanan (GoRide, GoFood, GoSend): ";
+        cout << "Pilih layanan (1. GoRide, 2. GoFood, 3. GoSend, 4. Quit): ";
         cin >> layanan;
 
-        if (layanan == "GoRide")
+        if (layanan == 1)
         {
             go_ride::proses();
         }
-        else if (layanan == "GoFood")
+        else if (layanan == 2)
         {
             go_food::proses();
         }
-        else if (layanan == "GoSend")
+        else if (layanan == 3)
         {
             go_send::proses();
         }
+        else if (layanan == 4)
+        {
+            cout << "===============================================" << endl;
+            cout << " Terimakasih telah menggunakan aplikasi GoJek! " << endl;
+            cout << "===============================================" << endl;
+            break;
+        }
         else
         {
-            cout << "Layanan tidak tersedia, mohon input ulang" << endl;
+            cout << "===============================================" << endl;
+            cout << "   Layanan tidak tersedia, mohon input ulang   " << endl;
+            cout << "===============================================" << endl;
             continue;
         }
     }

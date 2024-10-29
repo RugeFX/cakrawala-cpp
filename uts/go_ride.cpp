@@ -19,9 +19,9 @@ namespace go_ride
     {
         double jarak;
 
-        cout << "==============================================" << endl;
-        cout << "Welcome to GoRide!" << endl;
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
+        cout << "               Welcome to GoRide!              " << endl;
+        cout << "===============================================" << endl;
 
         cout << "Masukkan jarak tempuh (Km): ";
         cin >> jarak;
@@ -31,12 +31,12 @@ namespace go_ride
         pair<string, double> bayar = pembayaran::proses(nominal_awal);
 
         cout << fixed << setprecision(2);
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
         cout << "Jarak tempuh: " << jarak << "Km" << endl;
         cout << "Metode pembayaran: " << bayar.first << endl;
         cout << "Nominal pembayaran: Rp." << bayar.second << endl;
         cout << endl
              << "Terimakasih telah menggunakan aplikasi GoRide!" << endl;
-        cout << "==============================================" << endl;
+        cout << "===============================================" << endl;
     }
 }
