@@ -1,0 +1,57 @@
+fn pembayaran_proses(nominal):
+    const DISKON_GOPAY = 0.2
+    metode = input("Masukkan Metode Pembayaran (GoPay / Cash): ")
+
+    total = metode == "GoPay" ? nominal - (nominal * DISKON_GOPAY) : nominal
+     
+    return { metode, total }
+
+// Entry Point Aplikasinya
+layanan = input("Pilih layanan: ")
+
+if layanan == "GoRide":
+    const TARIF_PER_KM = 3500
+
+    jarak = (float) input("Masukkan jarak tempuh (Km): ")
+    nominal_awal = jarak * TARIF_PER_KM
+    bayar = pembayaran_proses(nominal_awal)
+
+    print("Jarak tempuh: {jarak} Km")
+    print("Metode pembayaran: {bayar.metode}")
+    print("Nominal pembayaran: Rp.{bayar.total}")
+elif layanan == "GoFood":
+    const HARGA_NUSANTARA = 100000, HARGA_BARAT = 150000, ONGKIR = 25000
+
+    kategori = input("Masukkan kategori makanan (Nusantara / Barat): ")
+    jumlah = (int) input("Masukkan jumlah pesanan: ")
+
+    nominal_awal = jumlah * (kategori == "Nusantara" ? HARGA_NUSANTARA : HARGA_BARAT)
+    bayar = pembayaran_proses(nominal_awal)
+    bayar.total += ONGKIR
+
+    print("Kategori makanan: {kategori}")
+    print("Jumlah pesanan: {jumlah}")
+    print("Metode pembayaran: {bayar.metode}")
+    print("Nominal pembayaran: Rp.{bayar.total} (termasuk ongkir sebesar Rp.{ONGKIR})")
+elif layanan == "GoSend":
+    const TARIF = 5000, TARIF_TAMBAHAN = 25000
+
+    jarak = (float) input("Masukkan jarak tempuh: ")
+    berat = (float) input("Masukkan berat barang: ")
+    volume = (float) input("Masukkan volume barang: ")
+    
+    nominal_awal = jarak * berat * volume * TARIF
+    bayar = pembayaran_proses(nominal_awal)
+
+    if volume > 50:
+        bayar.total += TARIF_TAMBAHAN
+
+    print("Jarak tempuh: {jarak}")
+    print("Berat barang: {berat}")
+    print("Volume barang: {volume}")
+    print("Metode pembayaran: {bayar.metode}")
+    
+    if volume > 50:
+        print("Nominal pembayaran: Rp.{bayar.total} (termasuk tarif tambahan sebesar Rp.{TARIF_TAMBAHAN})")
+    else:
+        print("Nominal pembayaran: Rp.{bayar.total}")
