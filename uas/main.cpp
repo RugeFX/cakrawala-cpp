@@ -89,18 +89,29 @@ void input_transaksi(ListPelanggan &list_pelanggan)
     while (true)
     {
         garis();
+        if (list_pelanggan.size() == 0)
+        {
+            cout << "Belum ada pelanggan yang terdaftar!" << endl;
+            return;
+        }
 
         int max_pelanggan = list_pelanggan.size();
+        int kode = input<int>("Pilih kode(1" + (max_pelanggan == 1 ? "" : "-" + to_string(list_pelanggan.size())) + "): ");
 
-        int kode = input<int>("Pilih kode(1-" + to_string(list_pelanggan.size()) + "): ") - 1;
+        if (kode > max_pelanggan || kode < 1)
+        {
+            continue;
+        }
+
         int jumlah = input<int>("Input jumlah transaksi yang ingin dimasukkan: ");
-        Pelanggan pelanggan = list_pelanggan.at(kode);
+        Pelanggan &pelanggan = list_pelanggan.at(kode - 1);
 
         for (int i = 0; i < jumlah; i++)
         {
-            pelanggan.total_transaksi += input<double>("Input total transaksi ke-" + to_string(i) + ": ");
+            pelanggan.total_transaksi += input<double>("Input total transaksi ke-" + to_string(i + 1) + ": ");
         }
         pelanggan.poin = static_cast<int>(pelanggan.total_transaksi) / 100000 * 10;
+        cout << "Total transaksi: " << pelanggan.total_transaksi << endl;
 
         garis();
 
