@@ -162,6 +162,8 @@ int main()
 {
     ListPelanggan list_pelanggan;
 
+    cout << fixed << setprecision(2);
+
     while (true)
     {
         int pilihan = main_menu();
