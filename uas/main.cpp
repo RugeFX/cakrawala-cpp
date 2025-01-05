@@ -1,19 +1,41 @@
-#include <string>
-#include <iostream>
-#include <iomanip>
-#include <vector>
-#include <sstream>
+#include "main.h"
 
 using namespace std;
 
-struct Pelanggan
+int main()
 {
-    string nama;
-    double total_transaksi;
-    int poin;
-};
+    ListPelanggan list_pelanggan;
 
-typedef vector<Pelanggan> ListPelanggan;
+    cout << fixed << setprecision(2);
+
+    while (true)
+    {
+        int pilihan = main_menu();
+
+        switch (pilihan)
+        {
+        case 1:
+            tambah_pelanggan(list_pelanggan);
+            break;
+        case 2:
+            input_transaksi(list_pelanggan);
+            break;
+        case 3:
+            daftar_pelanggan(list_pelanggan);
+            break;
+        case 4:
+            garis();
+            cout << "Bye bye!" << endl;
+            garis();
+            return 0;
+        default:
+            cout << "it's cool that you've managed to trigger this line of code";
+            return 1;
+        }
+    }
+
+    return 0;
+}
 
 template <typename T = string>
 T input(const string pesan)
@@ -26,6 +48,23 @@ T input(const string pesan)
     return value;
 }
 
+string input_line(const string pesan)
+{
+    string result;
+    cin.ignore();
+    cout << pesan;
+    getline(cin, result);
+
+    return result;
+}
+
+void enter_lanjut(const string pesan = "Tekan enter untuk melanjutkan...")
+{
+    cout << pesan;
+    cin.get();
+    cin.ignore();
+}
+
 void garis()
 {
     cout << "==================================================" << endl;
@@ -33,8 +72,6 @@ void garis()
 
 int main_menu()
 {
-    int pilihan = 0;
-
     garis();
     cout << "Menu Utama" << endl
          << endl;
@@ -44,14 +81,12 @@ int main_menu()
     cout << "4. Keluar dari aplikasi" << endl;
     garis();
 
+    short pilihan = input<short>("Masukkan pilihan anda: ");
+
     while (pilihan < 1 || pilihan > 4)
     {
-        pilihan = input<int>("Masukkan pilihan anda: ");
-
-        if (pilihan < 1 || pilihan > 4)
-        {
-            cout << "Tolong masukkan input yang valid! (1, 2, 3, 4)" << endl;
-        }
+        cout << "Tolong masukkan input yang valid! (1, 2, 3, 4)" << endl;
+        pilihan = input<short>("Masukkan pilihan anda: ");
     }
 
     return pilihan;
@@ -59,7 +94,15 @@ int main_menu()
 
 bool input_lagi(string text = "Ingin input lagi(y/n)?: ")
 {
-    return tolower(input<char>(text)) == 'y';
+    char pilihan = (char)tolower(input<char>(text));
+
+    while (pilihan != 'y' && pilihan != 'n')
+    {
+        cout << "Tolong masukkan input yang valid!" << endl;
+        pilihan = (char)tolower(input<char>(text));
+    }
+
+    return pilihan == 'y';
 }
 
 void tambah_pelanggan(ListPelanggan &list_pelanggan)
@@ -73,7 +116,7 @@ void tambah_pelanggan(ListPelanggan &list_pelanggan)
 
         cout << "Kode pelanggan saat ini: " << list_pelanggan.size() + 1 << endl;
 
-        string nama = input("Input nama: ");
+        string nama = input_line("Input nama: ");
 
         list_pelanggan.push_back(Pelanggan{nama, 0.0});
 
@@ -126,9 +169,8 @@ void daftar_pelanggan(ListPelanggan &list_pelanggan)
 
     if (list_pelanggan.size() == 0)
     {
-        cout << "Belum ada pelanggan yang terdaftar!";
-        cin.ignore();
-        cin.get();
+        cout << "Belum ada pelanggan yang terdaftar!" << endl;
+        enter_lanjut();
         return;
     }
 
@@ -154,41 +196,5 @@ void daftar_pelanggan(ListPelanggan &list_pelanggan)
         garis();
     }
 
-    cin.ignore();
-    cin.get();
-}
-
-int main()
-{
-    ListPelanggan list_pelanggan;
-
-    cout << fixed << setprecision(2);
-
-    while (true)
-    {
-        int pilihan = main_menu();
-
-        switch (pilihan)
-        {
-        case 1:
-            tambah_pelanggan(list_pelanggan);
-            break;
-        case 2:
-            input_transaksi(list_pelanggan);
-            break;
-        case 3:
-            daftar_pelanggan(list_pelanggan);
-            break;
-        case 4:
-            garis();
-            cout << "Bye bye!" << endl;
-            garis();
-            return 0;
-        default:
-            cout << "it's cool that you've managed to trigger this line of code";
-            return 1;
-        }
-    }
-
-    return 0;
+    enter_lanjut();
 }
