@@ -37,7 +37,7 @@ int main()
     return 0;
 }
 
-template <typename T = string>
+template <typename T>
 T input(const string pesan)
 {
     // TODO: add validasi atau semacamnya, namun malas
